@@ -77,7 +77,7 @@ class _Hud extends StatelessWidget {
               '$minutes:$seconds',
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: hudFontSize,
               ),
             ),
           ),
