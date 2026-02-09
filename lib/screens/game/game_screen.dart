@@ -69,7 +69,7 @@ class _Hud extends StatelessWidget {
         final seconds = ( totalSeconds % 60).toString().padLeft( 2, '0' );
 
         return Positioned(
-          top: 40,
+          top: 30,
           left: 20,
           child: Container(
             padding: const EdgeInsets.all(8),
@@ -77,12 +77,32 @@ class _Hud extends StatelessWidget {
               color: Colors.black.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Text(
-              '$minutes:$seconds',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: hudFontSize,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Tiempo: $minutes:$seconds',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox( height: 6 ),
+                Text(
+                  'Nivel: ${ game.gameState.currentLevel }',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'Mundo: ${ game.gameState.currentWorld }',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
             ),
           ),
         );
