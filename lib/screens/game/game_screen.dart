@@ -16,6 +16,9 @@ class GameScreen extends StatelessWidget {
           'HUD': ( context, BallGame game) {
             return _Hud( game: game );
           },
+          'DebugButton': ( context, BallGame game ) {
+            return _DebugButton( game:game );
+          },
           'GameOver': ( context, BallGame game ) {
             return const Center(
               child: Text(
@@ -39,7 +42,7 @@ class GameScreen extends StatelessWidget {
             );
           },
         },
-        initialActiveOverlays: const ['HUD'],
+        initialActiveOverlays: const ['HUD', 'DebugButton'],
       ),
     );
   }
@@ -79,6 +82,26 @@ class _Hud extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _DebugButton extends StatelessWidget {
+  final BallGame game;
+
+  const _DebugButton({ required this.game });
+
+  @override
+  Widget build( BuildContext context ) {
+    return Positioned(
+      bottom: 40,
+      right: 20,
+      child: ElevatedButton(
+        onPressed: () {
+          game.gameState.completeLevel();
+        },
+        child: const Text('PASAR NIVEL'),
+      ),
     );
   }
 }
