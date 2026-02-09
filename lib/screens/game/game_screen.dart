@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import '../../game/ball_game.dart';
 import 'package:ball_game/utils/constants.dart';
+import 'package:ball_game/screens/level_complete/level_complete_screen.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({ super.key });
@@ -41,6 +42,9 @@ class GameScreen extends StatelessWidget {
                 ),
               ),
             );
+          },
+          overlayLevelComplete: ( context, BallGame game ) {
+            return LevelCompleteScreen( game: game );
           },
         },
         initialActiveOverlays: const [overlayHud, overlayDebug],
