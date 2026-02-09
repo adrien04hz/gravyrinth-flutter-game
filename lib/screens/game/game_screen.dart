@@ -124,6 +124,7 @@ class _DebugButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           game.gameState.completeLevel();
+          game.loadLevel( game.gameState.currentLevel + 1 );
         },
         child: const Text('PASAR NIVEL'),
       ),
