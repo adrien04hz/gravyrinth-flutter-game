@@ -9,28 +9,33 @@ class BallGame extends FlameGame {
 
     @override
     Future<void> onLoad() async {
-        super.onLoad();
+      super.onLoad();
 
-        final timer = TimerSystem( initialTime: initialGameTime );
-        gameState = GameState( timer: timer );
+      final timer = TimerSystem( initialTime: initialGameTime );
+      gameState = GameState( timer: timer );
 
-        gameState.startGame();
+      gameState.startGame();
     }
 
     @override
     void update( double dt ) {
-        super.update( dt );
+      super.update( dt );
 
-        gameState.update( dt );
+      gameState.update( dt );
 
-        if ( gameState.isGameOver ) {
-            pauseEngine();
-            overlays.add( overlayGameOver );
-        }
+      if ( gameState.levelCompleted ) {
+        pauseEngine();
+        overlays.add( overlayLevelComplete );
+      }
 
-        if ( gameState.isVictory ) {
-            pauseEngine();
-            overlays.add( overlayVictory );
-        }
+      if ( gameState.isGameOver ) {
+        pauseEngine();
+        overlays.add( overlayGameOver );
+      }
+
+      if ( gameState.isVictory ) {
+        pauseEngine();
+        overlays.add( overlayVictory );
+      }
     }
 }
