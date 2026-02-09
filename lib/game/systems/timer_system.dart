@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class TimerSystem {
   // Tiempo restante en segundos
   double _timeRemaining;
@@ -5,8 +7,12 @@ class TimerSystem {
   //Estado del timer
   bool _isRunning = false;
 
+  // Notificador para la UI
+  final ValueNotifier<double> timeNotifier;
+
   TimerSystem({ required double initialTime })
-    : _timeRemaining = initialTime;
+    : _timeRemaining = initialTime,
+      timeNotifier = ValueNotifier<double>(initialTime);
 
   // Iniciar timer
   void start() {
@@ -18,9 +24,14 @@ class TimerSystem {
     _isRunning = false;
   }
 
+  void resume() {
+    _isRunning = true;
+  }
+
   // Reanudar timer
   void reset( double newTime ) {
     _timeRemaining = newTime;
+    timeNotifier.value = newTime;
     _isRunning = false;
   }
 
@@ -33,11 +44,15 @@ class TimerSystem {
     if( _timeRemaining < 0 ){
       _timeRemaining = 0;
     }
+
+    // Avisar a la UI
+    timeNotifier.value = _timeRemaining;
   }
 
   // Tiempo bonus
   void addBonus( double seconds ) {
     _timeRemaining += seconds;
+    timeNotifier.value = _timeRemaining;
   }
 
   // Getter: tiempo restante
