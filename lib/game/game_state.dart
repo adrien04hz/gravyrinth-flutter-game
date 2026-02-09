@@ -6,6 +6,8 @@ class GameState {
   bool _isGameOver = false;
   bool _isVictory = false;
 
+  bool _levelCompleted = false;
+
   final TimerSystem timer;
 
   GameState({ required this.timer });
@@ -25,14 +27,8 @@ class GameState {
     final bonus = _bonusForLevel( _currentLevel );
     timer.addBonus( bonus );
 
-    // Avanzar nivel
-    _currentLevel++;
-
-    // Verificar victoria
-    if ( _currentLevel > maxLevels ) {
-      _isVictory = true;
-      timer.pause();
-    }
+    _levelCompleted = true;
+    timer.pause();
   }
 
   // Llamadas continuas
@@ -60,6 +56,19 @@ class GameState {
     return bonusWorld4; 
   }
 
+  // Continuar al siguiente nivel
+  void continueToNextLevel() {
+    _levelCompleted = false;
+    _currentLevel++;
+
+    if ( _currentLevel > maxLevels ) {
+      _isVictory = true;
+      timer.pause();
+    } else {
+      timer.resume();
+    }
+  }
+
   // Mundo actual (1 a 4)
   int get currentWorld {
     if ( _currentLevel <= 5 ) return 1;
@@ -71,4 +80,7 @@ class GameState {
   int get currentLevel => _currentLevel;
   bool get isGameOver => _isGameOver;
   bool get isVictory => _isVictory;
+
+  bool get levelCompleted => _levelCompleted;
+  double get lastBonus => _bonusForLevel( _currentLevel );
 }
