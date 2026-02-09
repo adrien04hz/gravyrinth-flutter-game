@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'game_state.dart';
 import 'systems/timer_system.dart';
+import 'package:ball_game/utils/constants.dart';
 
 
 class BallGame extends FlameGame {
@@ -10,7 +11,7 @@ class BallGame extends FlameGame {
     Future<void> onLoad() async {
         super.onLoad();
 
-        final timer = TimerSystem( initialTime: 300 );
+        final timer = TimerSystem( initialTime: initialGameTime );
         gameState = GameState( timer: timer );
 
         gameState.startGame();
@@ -24,12 +25,12 @@ class BallGame extends FlameGame {
 
         if ( gameState.isGameOver ) {
             pauseEngine();
-            overlays.add( 'GameOver' );
+            overlays.add( overlayGameOver );
         }
 
         if ( gameState.isVictory ) {
             pauseEngine();
-            overlays.add( 'Victory' );
+            overlays.add( overlayVictory );
         }
     }
 }

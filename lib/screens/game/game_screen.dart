@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import '../../game/ball_game.dart';
+import 'package:ball_game/utils/constants.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({ super.key });
@@ -13,13 +14,13 @@ class GameScreen extends StatelessWidget {
       body: GameWidget<BallGame>(
         game: game,
         overlayBuilderMap: {
-          'HUD': ( context, BallGame game) {
+          overlayHud: ( context, BallGame game) {
             return _Hud( game: game );
           },
-          'DebugButton': ( context, BallGame game ) {
+          overlayDebug: ( context, BallGame game ) {
             return _DebugButton( game:game );
           },
-          'GameOver': ( context, BallGame game ) {
+          overlayGameOver: ( context, BallGame game ) {
             return const Center(
               child: Text(
                 'GAME OVER',
@@ -30,7 +31,7 @@ class GameScreen extends StatelessWidget {
               ),
             );
           },
-          'Victory': ( context, BallGame game ) {
+          overlayVictory: ( context, BallGame game ) {
             return const Center(
               child: Text(
                 '¡GANASTE!',
@@ -42,7 +43,7 @@ class GameScreen extends StatelessWidget {
             );
           },
         },
-        initialActiveOverlays: const ['HUD', 'DebugButton'],
+        initialActiveOverlays: const [overlayHud, overlayDebug],
       ),
     );
   }

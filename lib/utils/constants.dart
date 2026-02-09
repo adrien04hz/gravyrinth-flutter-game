@@ -1,0 +1,55 @@
+// =======================
+// GAME SETTINGS
+// =======================
+
+const int maxLevels = 20;
+const int totalWorlds = 4;
+
+// =======================
+// TIME SETTINGS
+// =======================
+
+const double initialGameTime = 10; // seconds
+
+const double bonusWorld1 = 5;
+const double bonusWorld2 = 4;
+const double bonusWorld3 = 3;
+const double bonusWorld4 = 2;
+
+// =======================
+// MAZE SETTINGS
+// =======================
+
+const int initialRows = 4;
+const int initialCols = 8;
+const double cellPadding = 4.0;
+
+// =======================
+// BALL SETTINGS
+// =======================
+
+const double ballRadius = 20;
+const double ballSpeed = 200;
+
+// =======================
+// ACCELEROMETER
+// =======================
+
+const double accelerometerSensitivity = 15.0;
+
+// =======================
+// HUD / UI
+// =======================
+
+const double hudFontSize = 24;
+const double hudPadding = 8;
+
+// =======================
+// OVERLAYS
+// =======================
+
+const String overlayHud = 'HUD';
+const String overlayGameOver = 'GameOver';
+const String overlayVictory = 'Victory';
+const String overlayLevelComplete = 'LevelComplete';
+const String overlayDebug = 'DebugButton';

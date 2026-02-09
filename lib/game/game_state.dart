@@ -1,8 +1,7 @@
+import 'package:ball_game/utils/constants.dart';
 import 'systems/timer_system.dart';
 
 class GameState {
-  static const int maxLevels = 20;
-
   int _currentLevel = 1;
   bool _isGameOver = false;
   bool _isVictory = false;
@@ -16,7 +15,7 @@ class GameState {
     _currentLevel = 1;
     _isGameOver = false;
     _isVictory = false;
-    timer.reset(300); // 5 minutos
+    timer.reset(initialGameTime); // 5 minutos
     timer.start();
   }
 
@@ -55,10 +54,10 @@ class GameState {
 
   // Bonus segun el nivel o mundo
   double _bonusForLevel( int lvl ) {
-    if ( lvl <= 5 ) return 5;
-    if ( lvl <= 10 ) return 4;
-    if ( lvl <= 15 ) return 3;
-    return 2; 
+    if ( lvl <= 5 ) return bonusWorld1;
+    if ( lvl <= 10 ) return bonusWorld2;
+    if ( lvl <= 15 ) return bonusWorld3;
+    return bonusWorld4; 
   }
 
   // Mundo actual (1 a 4)
