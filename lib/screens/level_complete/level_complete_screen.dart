@@ -10,8 +10,9 @@ class LevelCompleteScreen extends StatelessWidget {
   @override
   Widget build( BuildContext context ) {
     final time = game.gameState.timer.timeRemaining;
-    final minutes = ( time ~/ 60 ).toString().padLeft( 2, '0' );
-    final seconds = ( time % 60 ).toString().padLeft( 2, '0' );
+    final totalSeconds = time.floor();
+    final minutes = ( totalSeconds ~/ 60).toString().padLeft( 2, '0' );
+    final seconds = ( totalSeconds % 60).toString().padLeft( 2, '0' );
 
     return Center(
       child: Container(
@@ -24,10 +25,10 @@ class LevelCompleteScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              '¡Nivel Completado!',
+            Text(
+              '¡Nivel ${game.gameState.currentLevel} Completado!',
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 24,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
