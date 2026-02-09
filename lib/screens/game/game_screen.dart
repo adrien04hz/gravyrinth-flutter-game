@@ -56,8 +56,9 @@ class _Hud extends StatelessWidget {
     return ValueListenableBuilder<double>(
       valueListenable: game.gameState.timer.timeNotifier,
       builder: ( context, time, _ ) {
-        final minutes = ( time ~/ 60).toString().padLeft( 2, '0' );
-        final seconds = ( time % 60).toInt().toString().padLeft( 2, '0' );
+        final totalSeconds = time.floor();
+        final minutes = ( totalSeconds ~/ 60).toString().padLeft( 2, '0' );
+        final seconds = ( totalSeconds % 60).toString().padLeft( 2, '0' );
 
         return Positioned(
           top: 40,
