@@ -6,6 +6,8 @@ import 'package:flame/components.dart';
 import 'levels/level_generator.dart';
 import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
+import 'package:flutter/material.dart';
+
 
 class BallGame extends FlameGame {
   late final GameState gameState;
@@ -68,6 +70,21 @@ class BallGame extends FlameGame {
 
     for ( int r = 0; r < rows; r++ ) {
       for ( int c = 0; c < cols; c++ ) {
+        // !DEBUG
+        if (false) {
+          add(RectangleComponent(
+            position: Vector2(
+              c * cellWidth,
+              r * cellHeight,
+            ),
+            size: Vector2(cellWidth, cellHeight),
+            paint: Paint()
+              ..style = PaintingStyle.stroke
+              ..color = Colors.white.withValues(alpha: 0.2),
+          ));
+        }
+
+        // Pared real
         if ( currentLevelData.grid[r][c] == 1 ) {
           final wall = Wall(
             position: Vector2(
