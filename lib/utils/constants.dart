@@ -20,8 +20,8 @@ const double bonusWorld4 = 2;
 // MAZE SETTINGS
 // =======================
 
-const int initialRows = 4;
-const int initialCols = 8;
+const int initialRows = 8;
+const int initialCols = 6;
 const double cellPadding = 4.0;
 
 // =======================
