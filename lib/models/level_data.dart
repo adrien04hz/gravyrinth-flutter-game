@@ -8,12 +8,12 @@ class Cell {
 
 class LevelData {
   final int rows;
-  final int columns;
-  final List<List<int>> grid;
+  final int cols;
+  final List<List<Cell>> grid;
 
   LevelData({
     required this.rows,
-    required this.columns,
+    required this.cols,
     required this.grid,
   });
 }
