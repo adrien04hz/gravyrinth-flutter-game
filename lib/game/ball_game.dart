@@ -5,10 +5,13 @@ import 'package:ball_game/utils/constants.dart';
 import 'levels/level_generator.dart';
 import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
+import 'components/ball.dart';
 
 
 class BallGame extends FlameGame {
   late final GameState gameState;
+
+  late Ball ball;
 
   late LevelData currentLevelData;
   final List<Wall> _walls = [];
@@ -113,5 +116,14 @@ class BallGame extends FlameGame {
         }
       }
     }
+
+    final satartX = cellWidth / 2;
+    final startY = cellHeight / 2;
+
+    ball = Ball(
+      position: Vector2( satartX, startY ),
+      radius: cellWidth * 0.25,
+    );
+    add( ball );
   }
 }
