@@ -2,11 +2,9 @@ import 'package:flame/game.dart';
 import 'game_state.dart';
 import 'systems/timer_system.dart';
 import 'package:ball_game/utils/constants.dart';
-import 'package:flame/components.dart';
 import 'levels/level_generator.dart';
 import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
-import 'package:flutter/material.dart';
 
 
 class BallGame extends FlameGame {
