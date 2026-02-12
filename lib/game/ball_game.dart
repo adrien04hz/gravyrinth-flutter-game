@@ -75,32 +75,41 @@ class BallGame extends FlameGame {
         final y = r * cellHeight;
 
         if ( cell.top ) {
-          add(Wall(
+          final wall = Wall(
             position: Vector2(x, y),
             size: Vector2( cellWidth, wallThickness ),
-          ));
+          );
+
+          _walls.add( wall );
+          add( wall );
         }
 
         if ( cell.left ) {
-          add(Wall(
+          final wall = Wall(
             position: Vector2(x, y),
             size: Vector2( wallThickness, cellHeight ),
-          ));
+          );
+          _walls.add( wall );
+          add( wall );
         }
 
         // Evitar duplicar border externos
         if ( r == rows - 1 && cell.bottom ) {
-          add(Wall(
+          final wall = Wall(
             position: Vector2(x, y + cellHeight - wallThickness),
             size: Vector2(cellWidth, wallThickness),
-          ));
+          );
+          _walls.add( wall );
+          add( wall );
         }
 
         if ( c == cols - 1 && cell.right ) {
-          add(Wall(
+          final wall = Wall(
             position: Vector2(x + cellWidth - wallThickness, y),
             size: Vector2(wallThickness, cellHeight),
-          ));
+          );
+          _walls.add( wall );
+          add( wall );
         }
       }
     }
