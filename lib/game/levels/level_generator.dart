@@ -4,8 +4,11 @@ import 'package:ball_game/utils/constants.dart';
 
 class LevelGenerator {
   static LevelData generate( int level ) {
-    final rows = initialRows;
-    final cols = initialCols;
+    final growth = (level - 1) ~/ 2;
+
+    final rows = initialRows + growth;
+    final cols = initialCols + (growth ~/ 3);
+
 
     final grid = List.generate(
       rows,
