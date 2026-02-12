@@ -5,6 +5,7 @@ import 'package:ball_game/utils/constants.dart';
 import 'levels/level_generator.dart';
 import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
+import 'package:ball_game/utils/constants.dart';
 
 
 class BallGame extends FlameGame {
@@ -77,29 +78,29 @@ class BallGame extends FlameGame {
         if ( cell.top ) {
           add(Wall(
             position: Vector2(x, y),
-            size: Vector2( cellWidth, wallTickness ),
+            size: Vector2( cellWidth, wallThickness ),
           ));
         }
 
         if ( cell.left ) {
           add(Wall(
             position: Vector2(x, y),
-            size: Vector2( wallTickness, cellHeight ),
+            size: Vector2( wallThickness, cellHeight ),
           ));
         }
 
         // Evitar duplicar border externos
         if ( r == rows - 1 && cell.bottom ) {
           add(Wall(
-            position: Vector2(x, y + cellHeight - wallTickness),
-            size: Vector2(cellWidth, wallTickness),
+            position: Vector2(x, y + cellHeight - wallThickness),
+            size: Vector2(cellWidth, wallThickness),
           ));
         }
 
         if ( c == cols - 1 && cell.right ) {
           add(Wall(
-            position: Vector2(x + cellWidth - wallTickness, y),
-            size: Vector2(wallTickness, cellHeight),
+            position: Vector2(x + cellWidth - wallThickness, y),
+            size: Vector2(wallThickness, cellHeight),
           ));
         }
       }
