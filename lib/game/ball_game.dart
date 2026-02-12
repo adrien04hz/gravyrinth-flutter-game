@@ -5,7 +5,6 @@ import 'package:ball_game/utils/constants.dart';
 import 'levels/level_generator.dart';
 import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
-import 'package:ball_game/utils/constants.dart';
 
 
 class BallGame extends FlameGame {
