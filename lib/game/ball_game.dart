@@ -60,7 +60,7 @@ class BallGame extends FlameGame {
     currentLevelData = LevelGenerator.generate( level );
 
     final rows = currentLevelData.rows;
-    final cols = currentLevelData.columns;
+    final cols = currentLevelData.cols;
 
     // Tamaño de cada celda segun pantalla
     final cellWidth = size.x / cols;
@@ -68,21 +68,39 @@ class BallGame extends FlameGame {
 
     for ( int r = 0; r < rows; r++ ) {
       for ( int c = 0; c < cols; c++ ) {
-        // Pared real
-        if ( currentLevelData.grid[r][c] == 1 ) {
-          final wall = Wall(
-            position: Vector2(
-              c * cellWidth,
-              r * cellHeight,
-            ),
-            size: Vector2(
-              cellWidth,
-              cellHeight,
-            ),
-          );
+        
+        final cell = currentLevelData.grid[r][c];
 
-          _walls.add( wall );
-          add( wall );
+        final x = c * cellWidth;
+        final y = r * cellHeight;
+
+        if ( cell.top ) {
+          add(Wall(
+            position: Vector2(x, y),
+            size: Vector2( cellWidth, wallTickness ),
+          ));
+        }
+
+        if ( cell.left ) {
+          add(Wall(
+            position: Vector2(x, y),
+            size: Vector2( wallTickness, cellHeight ),
+          ));
+        }
+
+        // Evitar duplicar border externos
+        if ( r == rows - 1 && cell.bottom ) {
+          add(Wall(
+            position: Vector2(x, y + cellHeight - wallTickness),
+            size: Vector2(cellWidth, wallTickness),
+          ));
+        }
+
+        if ( c == cols - 1 && cell.right ) {
+          add(Wall(
+            position: Vector2(x + cellWidth - wallTickness, y),
+            size: Vector2(wallTickness, cellHeight),
+          ));
         }
       }
     }
