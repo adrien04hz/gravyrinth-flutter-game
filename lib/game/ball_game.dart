@@ -67,11 +67,6 @@ class BallGame extends FlameGame {
 
     gameState.update( dt );
 
-    if ( gameState.levelCompleted ) {
-      pauseEngine();
-      overlays.add( overlayLevelComplete );
-    }
-
     if ( gameState.isGameOver ) {
       pauseEngine();
       overlays.add( overlayGameOver );
@@ -201,9 +196,16 @@ class BallGame extends FlameGame {
   }
 
   void _checkGoal() {
-    if ( ball.toRect().overlaps( goal.toRect() ) ) {
+    if (!gameState.levelCompleted &&
+        ball.toRect().overlaps(goal.toRect())) {
+
       _playLevelCompleteAnimation();
       gameState.completeLevel();
+
+      Future.delayed(const Duration(milliseconds: 600), () {
+        pauseEngine();
+        overlays.add(overlayLevelComplete);
+      });
     }
   }
 
