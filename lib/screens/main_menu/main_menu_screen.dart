@@ -1,3 +1,4 @@
+import 'package:flame/experimental.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../game/game_screen.dart';
@@ -26,6 +27,20 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: AnimatedScale(
+        duration: const Duration(milliseconds: 200),
+        scale: _showAbout ? 0 : 1,
+        child: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _showAbout = true;
+            });
+          },
+          shape: CircleBorder(),
+          child: const Icon(Icons.info_outline),
+        ),
+      ),
+
       body: Stack(
         children: [
 
@@ -89,18 +104,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       );
                     },
                   ),
-
-                  const SizedBox(height: 16),
-
-                  _MenuButton(
-                    text: "CRÉDITOS",
-                    onPressed: () {
-                      setState(() {
-                        _showAbout = true;
-                      });
-                    },
-                  ),
-
 
                   const SizedBox(height: 16),
 
