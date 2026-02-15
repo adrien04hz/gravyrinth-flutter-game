@@ -23,7 +23,7 @@ class _GameOverScreenState extends State<GameOverScreen> {
     super.initState();
 
     AudioSystem().playLose();
-    
+
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;
@@ -87,6 +87,8 @@ class _GameOverScreenState extends State<GameOverScreen> {
                       minimumSize: const Size(150, 40),
                     ),
                     onPressed: () {
+                      AudioSystem().playClick();
+                      AudioSystem().stopPlayer();
                       game.overlays.remove( overlayGameOver );
                       game.resumeEngine();
                       Navigator.of(context).pop();
@@ -99,6 +101,8 @@ class _GameOverScreenState extends State<GameOverScreen> {
                       minimumSize: const Size(160, 40),
                     ),
                     onPressed: () {
+                      AudioSystem().playClick();
+                      AudioSystem().stopPlayer();
                       game.overlays.remove(overlayGameOver);
                       game.gameState.reset();
                       game.loadLevel(1);

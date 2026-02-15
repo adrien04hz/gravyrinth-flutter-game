@@ -29,7 +29,7 @@ class AudioSystem {
     if ( _bgPlaying ) {
       await stopBackgroundMusic();
     }
-    await _player.play(AssetSource('sounds/game_over.mp3'));
+    await _player.play(AssetSource('sounds/game_over.wav'));
   }
 
   Future<void> playBackgroundMusic() async {
@@ -47,5 +47,9 @@ class AudioSystem {
   Future<void> stopBackgroundMusic() async {
     await _bgSoundPlayer.stop();
     _bgPlaying = false;
+  }
+
+  Future<void> stopPlayer() async {
+    await _player.stop();
   }
 }
