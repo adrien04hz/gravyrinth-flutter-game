@@ -68,12 +68,49 @@ class _AboutScreenState extends State<AboutScreen> {
                   SizedBox(height: 16),
 
                   Text(
-                    "Maze Tilt\n\n"
-                    "Juego de laberintos controlado por inclinación.\n\n"
-                    "Desarrollado por:\n"
-                    "Adrien Hernández\n\n"
-                    "Universidad Tecnológica de la Mixteca\n"
-                    "Ingeniería en Computación",
+                    "Maze Tilt",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+
+                  SizedBox(height: 12),
+
+                  Text(
+                    "Completa cada laberinto inclinando tu dispositivo. ¡Desafía tus habilidades y diviértete!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16,
+                    ),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  Text(
+                    "Desarrolado por:",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+
+                  Text(
+                    "Adrien Hernández Sánchez",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16,
+                    ),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  Text(
+                    "Versión: 1.0.0",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white70,
