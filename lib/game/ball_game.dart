@@ -187,4 +187,10 @@ class BallGame extends FlameGame {
       size.y - ball.radius,
     );
   }
+
+  void _checkGoal() {
+    if ( ball.toRect().overlaps( goal.toRect() ) ) {
+      gameState.completeLevel();
+    }
+  }
 }
