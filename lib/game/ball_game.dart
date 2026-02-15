@@ -219,12 +219,5 @@ class BallGame extends FlameGame {
         ),
       ),
     );
-
-    goal.add(
-      ScaleEffect.by(
-        Vector2.all(1.8),
-        EffectController( duration: 0.4 ),
-      ),
-    );
   }
 }
