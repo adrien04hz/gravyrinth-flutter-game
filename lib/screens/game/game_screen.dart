@@ -43,7 +43,7 @@ class GameScreen extends StatelessWidget {
 
 class _Hud extends StatelessWidget {
   final BallGame game;
-
+  
   const _Hud({ required this.game });
 
   @override

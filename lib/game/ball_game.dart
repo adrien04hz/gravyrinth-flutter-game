@@ -9,6 +9,7 @@ import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
 import 'components/ball.dart';
 import 'components/goal.dart';
+import 'package:flutter/material.dart';
 
 class BallGame extends FlameGame {
   late final GameState gameState;
@@ -20,6 +21,7 @@ class BallGame extends FlameGame {
   late Goal goal;
 
   bool _hasLoadedLevel = false;
+  bool _gameStateInitialized = false;
 
   late LevelData currentLevelData;
   final List<Wall> _walls = [];
@@ -31,6 +33,7 @@ class BallGame extends FlameGame {
     final timer = TimerSystem( initialTime: initialGameTime );
     accelerometer = AccelerometerController();
     gameState = GameState( timer: timer );
+    _gameStateInitialized = true;
 
     accelerometer.start();
     gameState.startGame();
@@ -220,4 +223,13 @@ class BallGame extends FlameGame {
       ),
     );
   }
+
+  @override
+  Color backgroundColor() {
+    if ( !_gameStateInitialized ) {
+      return getWorldColor(1);
+    }
+    return getWorldColor(gameState.currentWorld);
+  }
+
 }
