@@ -59,7 +59,7 @@ class BallGame extends FlameGame {
     _keepInsideScreen();
     _checkGoal();
 
-    const sensitivity = 50.0;
+    const sensitivity = 35.0;
 
     ball.velocity.x = -accelerometer.tilt.x * sensitivity;
     ball.velocity.y = accelerometer.tilt.y * sensitivity;
@@ -96,6 +96,8 @@ class BallGame extends FlameGame {
     }
 
     _walls.clear();
+
+    _hasLoadedLevel = true;
 
     // Generar nuevo nivel
     currentLevelData = LevelGenerator.generate( level );
