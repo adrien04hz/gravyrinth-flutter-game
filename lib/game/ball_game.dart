@@ -7,7 +7,7 @@ import 'levels/level_generator.dart';
 import 'components/wall.dart';
 import 'package:ball_game/models/level_data.dart';
 import 'components/ball.dart';
-
+import 'components/goal.dart';
 
 class BallGame extends FlameGame {
   late final GameState gameState;
@@ -15,6 +15,8 @@ class BallGame extends FlameGame {
   late AccelerometerController accelerometer;
 
   late Ball ball;
+
+  late Goal goal;
 
   late LevelData currentLevelData;
   final List<Wall> _walls = [];
@@ -143,6 +145,16 @@ class BallGame extends FlameGame {
         }
       }
     }
+
+    final goalX = ( cols - 1 ) * cellWidth;
+    final goalY = ( rows - 1 ) * cellHeight;
+
+    goal = Goal(
+      position: Vector2( goalX, goalY ),
+      size: Vector2( cellWidth, cellHeight ),
+    );
+
+    add( goal );
 
     final satartX = cellWidth / 2;
     final startY = cellHeight / 2;
