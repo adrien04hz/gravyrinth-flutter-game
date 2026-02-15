@@ -96,7 +96,9 @@ class _LevelCompleteScreenState
                     const SizedBox(height: 8),
 
                     Text(
-                      '+${game.gameState.lastBonus}s de tiempo extra',
+                      game.gameState.currentLevel == maxLevels
+                          ? '¡Increíble!'
+                          : '+${game.gameState.lastBonus}s de tiempo extra',
                       style: const TextStyle(
                         color: Colors.greenAccent,
                         fontSize: 18,
