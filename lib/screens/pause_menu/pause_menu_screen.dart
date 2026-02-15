@@ -1,4 +1,3 @@
-import 'package:ball_game/game/components/ball.dart';
 import 'package:flutter/material.dart';
 import 'package:ball_game/game/ball_game.dart';
 import 'package:ball_game/utils/constants.dart';
