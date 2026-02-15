@@ -1,3 +1,4 @@
+import 'package:ball_game/game/systems/audio_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import '../../game/ball_game.dart';
@@ -9,6 +10,10 @@ import 'package:ball_game/screens/end_game/game_over_screen.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({ super.key });
+
+  void onLoad() {
+    AudioSystem().playBackgroundMusic();
+  }
 
   @override
   Widget build( BuildContext context ) {

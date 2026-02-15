@@ -23,7 +23,7 @@ class _VictoryScreenState extends State<VictoryScreen> {
     super.initState();
 
     AudioSystem().playWin();
-    
+
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;
@@ -95,6 +95,8 @@ class _VictoryScreenState extends State<VictoryScreen> {
 
                   ElevatedButton(
                     onPressed: () {
+                      AudioSystem().playClick();
+                      AudioSystem().stopPlayer();
                       game.overlays.remove( overlayVictory );
                       game.resumeEngine();
                       Navigator.of(context).pop();
@@ -104,6 +106,8 @@ class _VictoryScreenState extends State<VictoryScreen> {
 
                   ElevatedButton(
                     onPressed: () {
+                      AudioSystem().playClick();
+                      AudioSystem().stopPlayer();
                       game.overlays.remove( overlayVictory );
                       game.gameState.reset();
                       game.loadLevel(1);

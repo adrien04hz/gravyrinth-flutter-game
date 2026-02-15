@@ -18,13 +18,15 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   void initState() {
     super.initState();
 
-    AudioSystem().playBackgroundMusic();
-
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;
       });
     });
+  }
+
+  void onLoad() {
+    AudioSystem().playBackgroundMusic();
   }
 
   @override
@@ -99,6 +101,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   _MenuButton(
                     text: "JUGAR",
                     onPressed: () {
+                      AudioSystem().stopBackgroundMusic();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
