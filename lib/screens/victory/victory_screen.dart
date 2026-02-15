@@ -1,3 +1,4 @@
+import 'package:ball_game/game/systems/audio_system.dart';
 import 'package:flutter/material.dart';
 import 'package:ball_game/game/ball_game.dart';
 import 'package:ball_game/utils/constants.dart';
@@ -20,6 +21,9 @@ class _VictoryScreenState extends State<VictoryScreen> {
   @override
   void initState() {
     super.initState();
+
+    AudioSystem().playWin();
+    
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;

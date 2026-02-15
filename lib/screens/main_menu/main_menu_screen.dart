@@ -1,3 +1,4 @@
+import 'package:ball_game/game/systems/audio_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../game/game_screen.dart';
@@ -16,6 +17,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   @override
   void initState() {
     super.initState();
+
+    AudioSystem().playBackgroundMusic();
+
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;
@@ -155,7 +159,10 @@ class _MenuButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(32),
           ),
         ),
-        onPressed: onPressed,
+        onPressed: () {
+          AudioSystem().playClick();
+          onPressed();
+        },
         child: Text(
           text,
           style: const TextStyle(
