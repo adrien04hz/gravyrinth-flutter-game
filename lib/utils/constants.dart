@@ -1,3 +1,20 @@
+import 'package:flutter/material.dart';
+
+Color getWorldColor(int world) {
+  switch (world) {
+    case 1:
+      return Colors.blueAccent;
+    case 2:
+      return Colors.greenAccent;
+    case 3:
+      return Colors.purpleAccent;
+    case 4:
+      return Colors.redAccent;
+    default:
+      return Colors.blueAccent;
+  }
+}
+
 // =======================
 // GAME SETTINGS
 // =======================
