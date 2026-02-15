@@ -100,20 +100,21 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       Navigator.pop(context);
                     },
                   ),
-
-                  if (_showAbout)
-                    AboutScreen(
-                      onClose: () {
-                        setState(() {
-                          _showAbout = false;
-                        });
-                      },
-                    ),
-
                 ],
               ),
             ),
           ),
+
+          if (_showAbout)
+            Positioned.fill(
+              child: AboutScreen(
+                onClose: () {
+                  setState(() {
+                    _showAbout = false;
+                  });
+                },
+              ),
+            ),
         ],
       ),
     );
