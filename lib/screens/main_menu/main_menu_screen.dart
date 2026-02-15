@@ -51,6 +51,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
         scale: _showAbout ? 0 : 1,
         child: FloatingActionButton(
           onPressed: () {
+            AudioSystem().playClick();
             setState(() {
               _showAbout = true;
             });
@@ -130,6 +131,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
                   _MenuButton(
                     text: "SALIR",
                     onPressed: () {
+                      AudioSystem().playClick();
                       SystemNavigator.pop();
                     },
                   ),

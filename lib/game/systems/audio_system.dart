@@ -3,53 +3,62 @@ import 'dart:math';
 
 class AudioSystem {
   static final AudioSystem _instance = AudioSystem._internal();
-
   factory AudioSystem() => _instance;
-
   AudioSystem._internal();
 
-  final AudioPlayer _player = AudioPlayer();
-  final AudioPlayer _bgSoundPlayer = AudioPlayer();
+  final AudioPlayer _musicPlayer = AudioPlayer();
+  final AudioPlayer _sfxPlayer = AudioPlayer();
 
-  bool _bgPlaying = false;
+  bool _musicPlaying = false;
 
-  Future<void> playClick() async {
-    final player = AudioPlayer();
-    await player.play(AssetSource('sounds/pop2.wav'));
-  }
+  // ==========================
+  // MÚSICA
+  // ==========================
 
-  Future<void> playWin() async {
-    if ( _bgPlaying ) {
-      await stopBackgroundMusic();
+  Future<void> playBackgroundMusic({bool random = true}) async {
+    if (_musicPlaying) return;
+
+    _musicPlaying = true;
+
+    await _musicPlayer.setReleaseMode(ReleaseMode.loop);
+    await _musicPlayer.setVolume(0.6);
+
+    String trackPath;
+
+    if (random) {
+      final trackNumber = Random().nextInt(3) + 1;
+      trackPath = 'sounds/bg$trackNumber.mp3';
+    } else {
+      trackPath = 'sounds/bg1.mp3';
     }
-    await _player.play(AssetSource('sounds/win.mp3'));
-  }
 
-  Future<void> playLose() async {
-    if ( _bgPlaying ) {
-      await stopBackgroundMusic();
-    }
-    await _player.play(AssetSource('sounds/game_over.wav'));
-  }
-
-  Future<void> playBackgroundMusic() async {
-    if ( _bgPlaying ) return;
-
-    _bgPlaying = true;
-
-    Random random = Random();
-    int trackNumber = random.nextInt(3) + 1; // Genera un número entre 1 y 3
-    String trackPath = 'sounds/bg$trackNumber.mp3';
-    await _bgSoundPlayer.setReleaseMode(ReleaseMode.loop);
-    await _bgSoundPlayer.play(AssetSource(trackPath));
+    await _musicPlayer.play(AssetSource(trackPath));
   }
 
   Future<void> stopBackgroundMusic() async {
-    await _bgSoundPlayer.stop();
-    _bgPlaying = false;
+    await _musicPlayer.stop();
+    _musicPlaying = false;
   }
 
-  Future<void> stopPlayer() async {
-    await _player.stop();
+  // ==========================
+  // EFECTOS
+  // ==========================
+
+  Future<void> playClick() async {
+    await _playSfx('sounds/pop2.wav');
+  }
+
+  Future<void> playWin() async {
+    await _playSfx('sounds/win.mp3');
+  }
+
+  Future<void> playLose() async {
+    await _playSfx('sounds/game_over.wav');
+  }
+
+  Future<void> _playSfx(String path) async {
+    await _sfxPlayer.setReleaseMode(ReleaseMode.stop);
+    await _sfxPlayer.setVolume(1.0);
+    await _sfxPlayer.play(AssetSource(path));
   }
 }
