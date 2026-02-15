@@ -54,3 +54,4 @@ const String overlayGameOver = 'GameOver';
 const String overlayVictory = 'Victory';
 const String overlayLevelComplete = 'LevelComplete';
 const String overlayDebug = 'DebugButton';
+const String overlayPauseMenu = 'PauseMenu';
