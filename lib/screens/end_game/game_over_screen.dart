@@ -88,7 +88,6 @@ class _GameOverScreenState extends State<GameOverScreen> {
                     ),
                     onPressed: () {
                       AudioSystem().playClick();
-                      AudioSystem().stopPlayer();
                       game.overlays.remove( overlayGameOver );
                       game.resumeEngine();
                       Navigator.of(context).pop();
@@ -102,7 +101,6 @@ class _GameOverScreenState extends State<GameOverScreen> {
                     ),
                     onPressed: () {
                       AudioSystem().playClick();
-                      AudioSystem().stopPlayer();
                       game.overlays.remove(overlayGameOver);
                       game.gameState.reset();
                       game.loadLevel(1);

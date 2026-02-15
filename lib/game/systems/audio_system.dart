@@ -6,19 +6,15 @@ class AudioSystem {
   factory AudioSystem() => _instance;
   AudioSystem._internal();
 
-  final AudioPlayer _musicPlayer = AudioPlayer();
-  final AudioPlayer _sfxPlayer = AudioPlayer();
-
-  bool _musicPlaying = false;
+  final AudioPlayer _musicPlayer = AudioPlayer( playerId: 'music' );
+  final AudioPlayer _sfxPlayer = AudioPlayer( playerId: 'sfx' );
 
   // ==========================
   // MÚSICA
   // ==========================
 
   Future<void> playBackgroundMusic({bool random = true}) async {
-    if (_musicPlaying) return;
-
-    _musicPlaying = true;
+    if ( _musicPlayer.state == PlayerState.playing ) return;
 
     await _musicPlayer.setReleaseMode(ReleaseMode.loop);
     await _musicPlayer.setVolume(0.6);
@@ -37,7 +33,6 @@ class AudioSystem {
 
   Future<void> stopBackgroundMusic() async {
     await _musicPlayer.stop();
-    _musicPlaying = false;
   }
 
   // ==========================
@@ -57,6 +52,7 @@ class AudioSystem {
   }
 
   Future<void> _playSfx(String path) async {
+    await _sfxPlayer.stop();
     await _sfxPlayer.setReleaseMode(ReleaseMode.stop);
     await _sfxPlayer.setVolume(1.0);
     await _sfxPlayer.play(AssetSource(path));
