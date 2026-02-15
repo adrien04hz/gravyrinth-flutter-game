@@ -55,6 +55,7 @@ class BallGame extends FlameGame {
     }
 
     _keepInsideScreen();
+    _checkGoal();
 
     const sensitivity = 50.0;
 
@@ -191,6 +192,7 @@ class BallGame extends FlameGame {
   void _checkGoal() {
     if ( ball.toRect().overlaps( goal.toRect() ) ) {
       gameState.completeLevel();
+      loadLevel( gameState.currentLevel + 1 );
     }
   }
 }
