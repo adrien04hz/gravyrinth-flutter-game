@@ -104,6 +104,7 @@ class _VictoryScreenState extends State<VictoryScreen> {
 
                   ElevatedButton(
                     onPressed: () {
+                      AudioSystem().playBackgroundMusic();
                       game.overlays.remove( overlayVictory );
                       game.gameState.reset();
                       game.loadLevel(1);

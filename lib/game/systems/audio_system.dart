@@ -39,10 +39,6 @@ class AudioSystem {
   // EFECTOS
   // ==========================
 
-  Future<void> playClick() async {
-    await _playSfx('sounds/pop2.wav');
-  }
-
   Future<void> playWin() async {
     await _musicPlayer.stop();
     await _playSfx('sounds/win.mp3');
