@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens/main_menu/main_menu_screen.dart';
 import 'package:flutter/services.dart';
 
+final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -12,7 +14,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  
+
   runApp(const MyApp());
 }
 
@@ -21,8 +23,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [routeObserver],
       home: MainMenuScreen(),
     );
   }
