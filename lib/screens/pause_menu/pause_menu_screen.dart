@@ -69,7 +69,7 @@ class _PauseMenuScreenState extends State<PauseMenuScreen> {
                       style: TextStyle(
                         fontSize: 28,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
 
@@ -130,21 +130,22 @@ class _PauseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: 200,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.greenAccent,
           foregroundColor: Colors.black,
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(32),
           ),
         ),
         onPressed: onPressed,
         child: Text(
           text,
           style: const TextStyle(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
           ),
         ),
       ),

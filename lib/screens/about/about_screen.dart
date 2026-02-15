@@ -60,7 +60,7 @@ class _AboutScreenState extends State<AboutScreen> {
                     "ACERCA DE",
                     style: TextStyle(
                       fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
                   ),
@@ -68,7 +68,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   SizedBox(height: 16),
 
                   Text(
-                    "Maze Tilt",
+                    "TiltBound",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,

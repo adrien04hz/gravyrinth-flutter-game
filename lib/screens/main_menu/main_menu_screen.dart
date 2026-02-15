@@ -58,10 +58,10 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 children: [
 
                   const Text(
-                    "MAZE TILT",
+                    "TILTBOUND",
                     style: TextStyle(
                       fontSize: 42,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       color: Colors.white,
                       letterSpacing: 2,
                     ),
@@ -134,14 +134,14 @@ class _MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 220,
+      width: 180,
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: Colors.greenAccent.withValues( alpha: 0.8 ),
           foregroundColor: Colors.black,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(32),
           ),
         ),
         onPressed: onPressed,
@@ -149,7 +149,7 @@ class _MenuButton extends StatelessWidget {
           text,
           style: const TextStyle(
             fontSize: 18,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),

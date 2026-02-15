@@ -79,7 +79,7 @@ class _LevelCompleteScreenState
                       style: const TextStyle(
                         fontSize: 24,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
 
