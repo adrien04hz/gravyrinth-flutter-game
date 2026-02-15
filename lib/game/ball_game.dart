@@ -37,6 +37,11 @@ class BallGame extends FlameGame {
   void update( double dt ) {
     super.update( dt );
 
+    const sensitivity = 50.0;
+
+    ball.velocity.x = accelerometer.tilt.x * sensitivity;
+    ball.velocity.y = -accelerometer.tilt.y * sensitivity;
+
     gameState.update( dt );
 
     if ( gameState.levelCompleted ) {
