@@ -68,7 +68,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   SizedBox(height: 16),
 
                   Text(
-                    "TiltBound",
+                    "GravyRinth",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
