@@ -8,6 +8,6 @@ class Goal extends RectangleComponent {
   }) : super(
     position: position,
     size: size,
-    paint: Paint()..color = Colors.greenAccent,
+    paint: Paint()..color = Colors.green.withValues( alpha: 0.5 ),
   );
 }
