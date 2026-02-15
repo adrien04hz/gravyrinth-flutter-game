@@ -90,7 +90,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   SizedBox(height: 20),
 
                   Text(
-                    "Desarrolado por:",
+                    "Desarrollado por:",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
