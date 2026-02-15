@@ -57,8 +57,17 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
 
+                  Image(
+                    image: const AssetImage('assets/images/tilt.png'),
+                    width: 120,
+                    height: 120,
+                    color: Colors.white.withValues(alpha: 0.9),
+                  ),
+
+                  const SizedBox(height: 30),
+
                   const Text(
-                    "TILTBOUND",
+                    "GRAVYRINTH",
                     style: TextStyle(
                       fontSize: 42,
                       fontWeight: FontWeight.w400,
@@ -67,7 +76,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     ),
                   ),
 
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 100),
 
                   _MenuButton(
                     text: "JUGAR",

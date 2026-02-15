@@ -2,14 +2,14 @@
 // GAME SETTINGS
 // =======================
 
-const int maxLevels = 2;
+const int maxLevels = 20;
 const int totalWorlds = 4;
 
 // =======================
 // TIME SETTINGS
 // =======================
 
-const double initialGameTime = 20; // seconds
+const double initialGameTime = 300; // seconds
 
 const double bonusWorld1 = 5;
 const double bonusWorld2 = 4;
