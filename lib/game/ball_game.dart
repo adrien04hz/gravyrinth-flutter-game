@@ -39,9 +39,18 @@ class BallGame extends FlameGame {
 
     final oldPosition = ball.position.clone();
 
-    ball.position += ball.velocity * dt;
+    // ----- Movimiento en X -----
+    ball.position.x += ball.velocity.x * dt;
+    if (_isColliding()) {
+      ball.position.x = oldPosition.x;
+    }
 
-    _handleCollisions( oldPosition );
+    // ----- Movimiento en Y -----
+    ball.position.y += ball.velocity.y * dt;
+    if (_isColliding()) {
+      ball.position.y = oldPosition.y;
+    }
+
     _keepInsideScreen();
 
     const sensitivity = 50.0;
@@ -144,13 +153,14 @@ class BallGame extends FlameGame {
     add( ball );
   }
 
-  void _handleCollisions( Vector2 oldPosition ) {
+  bool _isColliding() {
     for ( final wall in _walls ) {
       if ( ball.toRect().overlaps( wall.toRect() ) ) {
-        ball.position = oldPosition;
-        break;
+        return true;
       }
     }
+    
+    return false;
   }
 
   void _keepInsideScreen() {
