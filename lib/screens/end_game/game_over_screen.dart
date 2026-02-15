@@ -87,7 +87,6 @@ class _GameOverScreenState extends State<GameOverScreen> {
                       minimumSize: const Size(150, 40),
                     ),
                     onPressed: () {
-                      AudioSystem().playClick();
                       game.overlays.remove( overlayGameOver );
                       game.resumeEngine();
                       Navigator.of(context).pop();
@@ -100,7 +99,6 @@ class _GameOverScreenState extends State<GameOverScreen> {
                       minimumSize: const Size(160, 40),
                     ),
                     onPressed: () {
-                      AudioSystem().playClick();
                       game.overlays.remove(overlayGameOver);
                       game.gameState.reset();
                       game.loadLevel(1);

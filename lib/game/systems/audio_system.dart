@@ -6,54 +6,42 @@ class AudioSystem {
   factory AudioSystem() => _instance;
   AudioSystem._internal();
 
-  final AudioPlayer _musicPlayer = AudioPlayer( playerId: 'music' );
-  final AudioPlayer _sfxPlayer = AudioPlayer( playerId: 'sfx' );
+  final AudioPlayer _musicPlayer = AudioPlayer(playerId: 'music');
+  final AudioPlayer _sfxPlayer = AudioPlayer(playerId: 'sfx');
 
-  // ==========================
-  // MÚSICA
-  // ==========================
+  bool _musicStarted = false;
 
-  Future<void> playBackgroundMusic({bool random = true}) async {
-    await _musicPlayer.stop();
+  Future<void> startGlobalMusic() async {
+    Random random = Random();
+    int trackNumber = random.nextInt(3) + 1; // 1, 2 o 3
+    if (_musicStarted) return;
+
+    _musicStarted = true;
+
     await _musicPlayer.setReleaseMode(ReleaseMode.loop);
     await _musicPlayer.setVolume(0.6);
-
-    String trackPath;
-
-    if (random) {
-      final trackNumber = Random().nextInt(3) + 1;
-      trackPath = 'sounds/bg$trackNumber.mp3';
-    } else {
-      trackPath = 'sounds/bg1.mp3';
-    }
-
-    await _musicPlayer.play(AssetSource(trackPath));
+    await _musicPlayer.play(
+      AssetSource('sounds/bg$trackNumber.mp3'),
+    );
   }
 
-  Future<void> stopBackgroundMusic() async {
+  Future<void> stopMusic() async {
     await _musicPlayer.stop();
+    _musicStarted = false;
   }
-
-  // ==========================
-  // EFECTOS
-  // ==========================
 
   Future<void> playClick() async {
-    await _playSfx('sounds/pop2.wav');
+    await _sfxPlayer.stop();
+    await _sfxPlayer.play(AssetSource('sounds/pop2.wav'));
   }
 
   Future<void> playWin() async {
-    await _playSfx('sounds/win.mp3');
+    await stopMusic();
+    await _sfxPlayer.play(AssetSource('sounds/win.mp3'));
   }
 
   Future<void> playLose() async {
-    await _playSfx('sounds/game_over.wav');
-  }
-
-  Future<void> _playSfx(String path) async {
-    await _sfxPlayer.stop();
-    await _sfxPlayer.setReleaseMode(ReleaseMode.stop);
-    await _sfxPlayer.setVolume(1.0);
-    await _sfxPlayer.play(AssetSource(path));
+    await stopMusic();
+    await _sfxPlayer.play(AssetSource('sounds/game_over.wav'));
   }
 }

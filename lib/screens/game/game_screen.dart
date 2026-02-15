@@ -1,4 +1,3 @@
-import 'package:ball_game/game/systems/audio_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import '../../game/ball_game.dart';
@@ -24,14 +23,10 @@ class _GameScreenState extends State<GameScreen> {
     super.initState();
 
     game = BallGame();
-
-    // Si quieres música diferente en gameplay:
-    AudioSystem().playBackgroundMusic(random: true);
   }
 
   @override
   void dispose() {
-    AudioSystem().stopBackgroundMusic();
     super.dispose();
   }
 

@@ -18,18 +18,11 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
   @override
   void initState() {
     super.initState();
-    AudioSystem().playBackgroundMusic();
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;
       });
     });
-  }
-
-  @override
-  void dispose() {
-    AudioSystem().stopBackgroundMusic();
-    super.dispose();
   }
 
   @override
@@ -104,7 +97,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
                   _MenuButton(
                     text: "JUGAR",
                     onPressed: () {
-                      AudioSystem().playClick();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -119,7 +111,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
                   _MenuButton(
                     text: "SALIR",
                     onPressed: () {
-                      AudioSystem().playClick();
                       SystemNavigator.pop();
                     },
                   ),
@@ -166,10 +157,7 @@ class _MenuButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(32),
           ),
         ),
-        onPressed: () {
-          AudioSystem().playClick();
-          onPressed();
-        },
+        onPressed: onPressed,
         child: Text(
           text,
           style: const TextStyle(
