@@ -14,8 +14,7 @@ class AudioSystem {
   // ==========================
 
   Future<void> playBackgroundMusic({bool random = true}) async {
-    if ( _musicPlayer.state == PlayerState.playing ) return;
-
+    await _musicPlayer.stop();
     await _musicPlayer.setReleaseMode(ReleaseMode.loop);
     await _musicPlayer.setVolume(0.6);
 

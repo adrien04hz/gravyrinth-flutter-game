@@ -8,17 +8,35 @@ import 'package:ball_game/screens/pause_menu/pause_menu_screen.dart';
 import 'package:ball_game/screens/victory/victory_screen.dart';
 import 'package:ball_game/screens/end_game/game_over_screen.dart';
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({ super.key });
 
-  void onLoad() {
-    AudioSystem().playBackgroundMusic();
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+
+  late final BallGame game;
+
+  @override
+  void initState() {
+    super.initState();
+
+    game = BallGame();
+
+    // Si quieres música diferente en gameplay:
+    AudioSystem().playBackgroundMusic(random: true);
+  }
+
+  @override
+  void dispose() {
+    AudioSystem().stopBackgroundMusic();
+    super.dispose();
   }
 
   @override
   Widget build( BuildContext context ) {
-    final game = BallGame();
-
     return Scaffold(
       body: GameWidget<BallGame>(
         game: game,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../game/game_screen.dart';
 import 'package:ball_game/screens/about/about_screen.dart';
-import 'package:ball_game/main.dart';
+
 class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({super.key});
 
@@ -27,19 +27,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context)!);
-  }
-
-  @override
-  void didPopNext() {
-    AudioSystem().playBackgroundMusic();
-  }
-
-  @override
   void dispose() {
-    routeObserver.unsubscribe(this);
+    AudioSystem().stopBackgroundMusic();
     super.dispose();
   }
 
@@ -115,7 +104,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
                   _MenuButton(
                     text: "JUGAR",
                     onPressed: () {
-                      AudioSystem().stopBackgroundMusic();
+                      AudioSystem().playClick();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
