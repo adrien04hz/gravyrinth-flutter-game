@@ -37,18 +37,19 @@ class BallGame extends FlameGame {
   void update( double dt ) {
     super.update( dt );
 
-    final oldPosition = ball.position.clone();
+    final oldX = ball.position.x;
+    final oldY = ball.position.y;
 
     // ----- Movimiento en X -----
     ball.position.x += ball.velocity.x * dt;
     if (_isColliding()) {
-      ball.position.x = oldPosition.x;
+      ball.position.x = oldX;
     }
 
     // ----- Movimiento en Y -----
     ball.position.y += ball.velocity.y * dt;
     if (_isColliding()) {
-      ball.position.y = oldPosition.y;
+      ball.position.y = oldY;
     }
 
     _keepInsideScreen();
