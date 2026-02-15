@@ -37,6 +37,13 @@ class BallGame extends FlameGame {
   void update( double dt ) {
     super.update( dt );
 
+    final oldPosition = ball.position.clone();
+
+    ball.position += ball.velocity * dt;
+
+    _handleCollisions( oldPosition );
+    _keepInsideScreen();
+
     const sensitivity = 50.0;
 
     ball.velocity.x = -accelerometer.tilt.x * sensitivity;
@@ -144,5 +151,17 @@ class BallGame extends FlameGame {
         break;
       }
     }
+  }
+
+  void _keepInsideScreen() {
+    ball.position.x = ball.position.x.clamp(
+      ball.radius,
+      size.x - ball.radius,
+    );
+
+    ball.position.y = ball.position.y.clamp(
+      ball.radius,
+      size.y - ball.radius,
+    );
   }
 }
