@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../game/game_screen.dart';
 import 'package:ball_game/screens/about/about_screen.dart';
 class MainMenuScreen extends StatefulWidget {
@@ -97,7 +98,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   _MenuButton(
                     text: "SALIR",
                     onPressed: () {
-                      Navigator.pop(context);
+                      SystemNavigator.pop();
                     },
                   ),
                 ],
