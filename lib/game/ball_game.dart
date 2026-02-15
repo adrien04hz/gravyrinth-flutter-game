@@ -1,4 +1,5 @@
 import 'package:ball_game/game/systems/accelerometer_controller.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/game.dart';
 import 'game_state.dart';
 import 'systems/timer_system.dart';
@@ -201,7 +202,27 @@ class BallGame extends FlameGame {
 
   void _checkGoal() {
     if ( ball.toRect().overlaps( goal.toRect() ) ) {
+      _playLevelCompleteAnimation();
       gameState.completeLevel();
     }
+  }
+
+  void _playLevelCompleteAnimation() {
+    ball.add(
+      ScaleEffect.by(
+        Vector2.all(1.5),
+        EffectController(
+          duration: 0.3,
+          reverseDuration: 0.3,
+        ),
+      ),
+    );
+
+    goal.add(
+      ScaleEffect.by(
+        Vector2.all(1.8),
+        EffectController( duration: 0.4 ),
+      ),
+    );
   }
 }
