@@ -1,3 +1,4 @@
+import 'package:ball_game/game/systems/accelerometer_controller.dart';
 import 'package:flame/game.dart';
 import 'game_state.dart';
 import 'systems/timer_system.dart';
@@ -11,6 +12,8 @@ import 'components/ball.dart';
 class BallGame extends FlameGame {
   late final GameState gameState;
 
+  late AccelerometerController accelerometer;
+
   late Ball ball;
 
   late LevelData currentLevelData;
@@ -21,8 +24,10 @@ class BallGame extends FlameGame {
     super.onLoad();
 
     final timer = TimerSystem( initialTime: initialGameTime );
+    accelerometer = AccelerometerController();
     gameState = GameState( timer: timer );
 
+    accelerometer.start();
     gameState.startGame();
 
     loadLevel( gameState.currentLevel );
