@@ -4,6 +4,8 @@ import '../../game/ball_game.dart';
 import 'package:ball_game/utils/constants.dart';
 import 'package:ball_game/screens/level_complete/level_complete_screen.dart';
 import 'package:ball_game/screens/pause_menu/pause_menu_screen.dart';
+import 'package:ball_game/screens/victory/victory_screen.dart';
+import 'package:ball_game/screens/end_game/game_over_screen.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({ super.key });
@@ -20,26 +22,10 @@ class GameScreen extends StatelessWidget {
             return _Hud( game: game );
           },
           overlayGameOver: ( context, BallGame game ) {
-            return const Center(
-              child: Text(
-                'GAME OVER',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.red,
-                ),
-              ),
-            );
+            return GameOverScreen( game: game );
           },
           overlayVictory: ( context, BallGame game ) {
-            return const Center(
-              child: Text(
-                '¡GANASTE!',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.green,
-                ),
-              ),
-            );
+            return VictoryScreen( game: game );
           },
           overlayLevelComplete: ( context, BallGame game ) {
             return LevelCompleteScreen( game: game );

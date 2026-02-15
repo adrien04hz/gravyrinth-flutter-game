@@ -2,7 +2,7 @@
 // GAME SETTINGS
 // =======================
 
-const int maxLevels = 20;
+const int maxLevels = 2;
 const int totalWorlds = 4;
 
 // =======================
