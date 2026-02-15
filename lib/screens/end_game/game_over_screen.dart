@@ -31,6 +31,7 @@ class _GameOverScreenState extends State<GameOverScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     final game = widget.game;
@@ -99,6 +100,7 @@ class _GameOverScreenState extends State<GameOverScreen> {
                       minimumSize: const Size(160, 40),
                     ),
                     onPressed: () {
+                      AudioSystem().playBackgroundMusic();
                       game.overlays.remove(overlayGameOver);
                       game.gameState.reset();
                       game.loadLevel(1);

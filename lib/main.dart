@@ -1,8 +1,8 @@
-import 'package:ball_game/game/systems/audio_system.dart';
 import 'package:flutter/material.dart';
 import 'screens/main_menu/main_menu_screen.dart';
 import 'package:flutter/services.dart';
 
+final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,8 +15,6 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  await AudioSystem().startGlobalMusic();
-
   runApp(const MyApp());
 }
 
@@ -27,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [routeObserver],
       home: MainMenuScreen(),
     );
   }

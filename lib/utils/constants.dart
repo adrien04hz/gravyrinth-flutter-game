@@ -56,7 +56,7 @@ const int totalWorlds = 4;
 // TIME SETTINGS
 // =======================
 
-const double initialGameTime = 300; // seconds
+const double initialGameTime = 10; // seconds
 
 const double bonusWorld1 = 5;
 const double bonusWorld2 = 4;

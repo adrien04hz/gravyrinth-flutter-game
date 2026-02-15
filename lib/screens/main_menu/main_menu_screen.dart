@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../game/game_screen.dart';
 import 'package:ball_game/screens/about/about_screen.dart';
+import 'package:ball_game/main.dart';
 
 class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({super.key});
@@ -18,11 +19,29 @@ class _MainMenuScreenState extends State<MainMenuScreen> with RouteAware{
   @override
   void initState() {
     super.initState();
+    AudioSystem().playBackgroundMusic();
     Future.delayed(Duration.zero, () {
       setState(() {
         _visible = true;
       });
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
+  void didPopNext() {
+    AudioSystem().playBackgroundMusic();
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
   }
 
   @override
