@@ -13,11 +13,4 @@ class Ball extends CircleComponent {
   );
 
   Vector2 velocity = Vector2.zero();
-
-  @override
-  void update( double dt ) {
-    super.update( dt );
-
-    position += velocity * dt;
-  }
 }
