@@ -120,6 +120,7 @@ class BallGame extends FlameGame {
           final wall = Wall(
             position: Vector2(x, y),
             size: Vector2( cellWidth, wallThickness ),
+            color: getWallColor( gameState.currentWorld ),
           );
 
           _walls.add( wall );
@@ -130,6 +131,7 @@ class BallGame extends FlameGame {
           final wall = Wall(
             position: Vector2(x, y),
             size: Vector2( wallThickness, cellHeight ),
+            color: getWallColor( gameState.currentWorld ),
           );
           _walls.add( wall );
           add( wall );
@@ -140,6 +142,7 @@ class BallGame extends FlameGame {
           final wall = Wall(
             position: Vector2(x, y + cellHeight - wallThickness),
             size: Vector2(cellWidth, wallThickness),
+            color: getWallColor( gameState.currentWorld ),
           );
           _walls.add( wall );
           add( wall );
@@ -149,6 +152,7 @@ class BallGame extends FlameGame {
           final wall = Wall(
             position: Vector2(x + cellWidth - wallThickness, y),
             size: Vector2(wallThickness, cellHeight),
+            color: getWallColor( gameState.currentWorld ),
           );
           _walls.add( wall );
           add( wall );
@@ -172,6 +176,7 @@ class BallGame extends FlameGame {
     ball = Ball(
       position: Vector2( satartX, startY ),
       radius: cellWidth * 0.25,
+      color: getBallColor( gameState.currentWorld ),
     );
     add( ball );
   }

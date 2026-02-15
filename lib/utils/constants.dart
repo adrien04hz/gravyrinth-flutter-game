@@ -3,15 +3,45 @@ import 'package:flutter/material.dart';
 Color getWorldColor(int world) {
   switch (world) {
     case 1:
-      return Colors.blueAccent;
+      return Colors.blue;
     case 2:
-      return Colors.greenAccent;
+      return Colors.black;
     case 3:
-      return Colors.purpleAccent;
+      return Colors.white;
     case 4:
-      return Colors.redAccent;
+      return Colors.red;
     default:
-      return Colors.blueAccent;
+      return Colors.blue;
+  }
+}
+
+Color getWallColor( int world ) {
+  switch (world) {
+    case 1:
+      return Colors.white;
+    case 2:
+      return Colors.white;
+    case 3:
+      return Colors.black;
+    case 4:
+      return Colors.black;
+    default:
+      return Colors.white;
+  }
+}
+
+Color getBallColor( int world ) {
+  switch (world) {
+    case 1:
+      return Colors.orange;
+    case 2:
+      return Colors.white;
+    case 3:
+      return Colors.black;
+    case 4:
+      return Colors.black;
+    default:
+      return Colors.white;
   }
 }
 
@@ -26,7 +56,7 @@ const int totalWorlds = 4;
 // TIME SETTINGS
 // =======================
 
-const double initialGameTime = 300; // seconds
+const double initialGameTime = 240; // seconds
 
 const double bonusWorld1 = 5;
 const double bonusWorld2 = 4;

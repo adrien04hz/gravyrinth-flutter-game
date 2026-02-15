@@ -5,10 +5,11 @@ class Ball extends CircleComponent {
   Ball({
     required Vector2 position,
     required double radius,
+    required Color color,
   }) : super (
     position: position,
     radius: radius,
-    paint: Paint()..color = Colors.orange,
+    paint: Paint()..color = color,
     anchor: Anchor.center,
   );
 
