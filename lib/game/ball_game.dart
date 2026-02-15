@@ -18,6 +18,8 @@ class BallGame extends FlameGame {
 
   late Goal goal;
 
+  bool _hasLoadedLevel = false;
+
   late LevelData currentLevelData;
   final List<Wall> _walls = [];
 
@@ -82,6 +84,12 @@ class BallGame extends FlameGame {
 
   // Cargar nivel
   void loadLevel( int level ) {
+
+    if ( _hasLoadedLevel ) {
+      ball.removeFromParent();
+      goal.removeFromParent();
+    }
+
     // Limpiar paredes anteriores
     for ( final wall in _walls ) {
       wall.removeFromParent();
