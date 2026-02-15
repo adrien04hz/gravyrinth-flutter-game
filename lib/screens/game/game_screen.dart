@@ -43,6 +43,9 @@ class GameScreen extends StatelessWidget {
           overlayLevelComplete: ( context, BallGame game ) {
             return LevelCompleteScreen( game: game );
           },
+          overlayPauseMenu: ( context, BallGame game ) {
+            return PauseMenuScreen( game: game );
+          }
         },
         initialActiveOverlays: const [overlayHud],
       ),
