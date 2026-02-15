@@ -23,7 +23,7 @@ const double bonusWorld4 = 2;
 const int initialRows = 8;
 const int initialCols = 6;
 const double cellPadding = 4.0;
-const double wallThickness = 6.0;
+const double wallThickness = 3.0;
 
 // =======================
 // BALL SETTINGS
