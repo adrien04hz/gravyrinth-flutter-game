@@ -79,6 +79,21 @@ class _GameOverScreenState extends State<GameOverScreen> {
                   const SizedBox(height: 24),
 
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(150, 40),
+                    ),
+                    onPressed: () {
+                      game.overlays.remove( overlayGameOver );
+                      game.resumeEngine();
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("MENÚ PRINCIPAL"),
+                  ),
+
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(160, 40),
+                    ),
                     onPressed: () {
                       game.overlays.remove(overlayGameOver);
                       game.gameState.reset();
