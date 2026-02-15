@@ -37,6 +37,14 @@ dependencies:
   sensors_plus: ^7.0.0
   flame: ^1.35.0
   audioplayers: ^6.5.1
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/tilt.png"
+  adaptive_icon_background: "#000000" # opcional Android
+  adaptive_icon_foreground: "assets/images/tilt.png"
 
 dev_dependencies:
   flutter_test:

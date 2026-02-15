@@ -22,7 +22,7 @@ class AudioSystem {
     String trackPath;
 
     if (random) {
-      final trackNumber = Random().nextInt(3) + 1;
+      final trackNumber = Random().nextInt(10) + 1;
       trackPath = 'sounds/bg$trackNumber.mp3';
     } else {
       trackPath = 'sounds/bg1.mp3';

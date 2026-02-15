@@ -113,6 +113,12 @@ class _Hud extends StatelessWidget {
                 ),
               ),
               IconButton(
+                padding: EdgeInsets.all(2),
+                constraints: const BoxConstraints(),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black.withValues(alpha: 0.6),
+                  shape: CircleBorder(),
+                ),
                 icon: const Icon(Icons.pause, color: Colors.white),
                 onPressed: () {
                   game.pauseEngine();
