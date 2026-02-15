@@ -136,4 +136,13 @@ class BallGame extends FlameGame {
     );
     add( ball );
   }
+
+  void _handleCollisions( Vector2 oldPosition ) {
+    for ( final wall in _walls ) {
+      if ( ball.toRect().overlaps( wall.toRect() ) ) {
+        ball.position = oldPosition;
+        break;
+      }
+    }
+  }
 }
