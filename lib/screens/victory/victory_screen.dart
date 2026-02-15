@@ -91,7 +91,16 @@ class _VictoryScreenState extends State<VictoryScreen> {
 
                   ElevatedButton(
                     onPressed: () {
-                      game.overlays.remove(overlayVictory);
+                      game.overlays.remove( overlayVictory );
+                      game.resumeEngine();
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text("MENÚ PRINCIPAL"),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      game.overlays.remove( overlayVictory );
                       game.gameState.reset();
                       game.loadLevel(1);
                       game.resumeEngine();

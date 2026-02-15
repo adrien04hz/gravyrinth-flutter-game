@@ -22,7 +22,7 @@ class GameScreen extends StatelessWidget {
             return _Hud( game: game );
           },
           overlayGameOver: ( context, BallGame game ) {
-            return GameOverScreen( game: game );
+            return VictoryScreen( game: game );
           },
           overlayVictory: ( context, BallGame game ) {
             return VictoryScreen( game: game );
