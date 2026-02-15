@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../game/game_screen.dart';
-
+import 'package:ball_game/screens/about/about_screen.dart';
 class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({super.key});
 
@@ -10,6 +10,7 @@ class MainMenuScreen extends StatefulWidget {
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
   bool _visible = false;
+  bool _showAbout = false;
 
   @override
   void initState() {
@@ -84,18 +85,12 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   _MenuButton(
                     text: "CRÉDITOS",
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) => const AboutDialog(
-                          applicationName: "Maze Tilt",
-                          applicationVersion: "1.0",
-                          children: [
-                            Text("Desarrollado por Adrien Hernández"),
-                          ],
-                        ),
-                      );
+                      setState(() {
+                        _showAbout = true;
+                      });
                     },
                   ),
+
 
                   const SizedBox(height: 16),
 
@@ -105,6 +100,16 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       Navigator.pop(context);
                     },
                   ),
+
+                  if (_showAbout)
+                    AboutScreen(
+                      onClose: () {
+                        setState(() {
+                          _showAbout = false;
+                        });
+                      },
+                    ),
+
                 ],
               ),
             ),
