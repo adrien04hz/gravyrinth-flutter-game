@@ -192,7 +192,6 @@ class BallGame extends FlameGame {
   void _checkGoal() {
     if ( ball.toRect().overlaps( goal.toRect() ) ) {
       gameState.completeLevel();
-      loadLevel( gameState.currentLevel + 1 );
     }
   }
 }

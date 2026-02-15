@@ -62,6 +62,7 @@ class LevelCompleteScreen extends StatelessWidget {
               onPressed: () {
                 game.gameState.continueToNextLevel();
                 game.overlays.remove( overlayLevelComplete );
+                game.loadLevel( game.gameState.currentLevel + 1);
                 game.resumeEngine();
               },
               child: const Text('CONTINUAR'),
