@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ball_game/game/ball_game.dart';
 import 'package:ball_game/utils/constants.dart';
 
-class PauseMenuScreen extends StatelessWidget{
+class PauseMenuScreen extends StatefulWidget {
   final BallGame game;
 
   const PauseMenuScreen({
@@ -11,69 +11,104 @@ class PauseMenuScreen extends StatelessWidget{
   });
 
   @override
-  Widget build( BuildContext context ) {
+  State<PauseMenuScreen> createState() => _PauseMenuScreenState();
+}
+
+class _PauseMenuScreenState extends State<PauseMenuScreen> {
+  bool _visible = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration.zero, () {
+      setState(() {
+        _visible = true;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final game = widget.game;
+
     return Stack(
       children: [
-        Positioned.fill(
+
+        // Fondo con fade
+        AnimatedOpacity(
+          duration: const Duration(milliseconds: 300),
+          opacity: _visible ? 0.7 : 0,
           child: Container(
-            color: Colors.black.withValues( alpha: 0.7 ),
+            color: Colors.black,
           ),
         ),
 
+        // Panel animado
         Center(
-          child: Container(
-            width: 300,
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade900,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  "PAUSA",
-                  style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: AnimatedScale(
+            duration: const Duration(milliseconds: 350),
+            curve: Curves.easeOutBack,
+            scale: _visible ? 1 : 0.85,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 300),
+              opacity: _visible ? 1 : 0,
+              child: Container(
+                width: 300,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade900,
+                  borderRadius: BorderRadius.circular(16),
                 ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
 
-                const SizedBox(height: 24),
+                    const Text(
+                      "PAUSA",
+                      style: TextStyle(
+                        fontSize: 28,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
 
-                _PauseButton(
-                  text: "Continuar",
-                  onPressed: () {
-                    game.overlays.remove( overlayPauseMenu );
-                    game.gameState.timer.resume();
-                    game.resumeEngine();
-                  },
+                    const SizedBox(height: 24),
+
+                    _PauseButton(
+                      text: "Continuar",
+                      onPressed: () {
+                        game.overlays.remove(overlayPauseMenu);
+                        game.gameState.timer.resume();
+                        game.resumeEngine();
+                      },
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    _PauseButton(
+                      text: "Reiniciar",
+                      onPressed: () {
+                        game.overlays.remove(overlayPauseMenu);
+                        game.gameState.reset();
+                        game.resumeEngine();
+                        game.loadLevel(1);
+                      },
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    _PauseButton(
+                      text: "Menú Principal",
+                      onPressed: () {
+                        game.overlays.remove(overlayPauseMenu);
+                        game.resumeEngine();
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
                 ),
-
-                const SizedBox(height: 12),
-
-                _PauseButton(
-                  text: "Reiniciar",
-                  onPressed: () {
-                    game.overlays.remove( overlayPauseMenu );
-                    game.gameState.reset();
-                    game.resumeEngine();
-                    game.loadLevel(1);
-                  },
-                ),
-
-                const SizedBox(height: 12),
-
-                _PauseButton(
-                  text: "Menú Principal",
-                  onPressed: () {
-                    game.overlays.remove( overlayPauseMenu );
-                    game.resumeEngine();
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
+              ),
             ),
           ),
         ),
@@ -81,6 +116,7 @@ class PauseMenuScreen extends StatelessWidget{
     );
   }
 }
+
 
 class _PauseButton extends StatelessWidget {
   final String text;
