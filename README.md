@@ -100,3 +100,15 @@ The game includes:
 <div align="center">
   <img src="public/gameOver.jpg" alt="Game over UI" width="45%" style="margin-right: 10px;"/>
 </div>
+
+
+## 🙌 Assets Attribution
+
+This project uses external visual and audio assets sourced from:
+
+- Flaticon (https://www.flaticon.es/)
+- Pixabay (https://pixabay.com/)
+- OpenGameArt (https://opengameart.org/)
+
+All assets remain the property of their respective authors.
+Proper credit is given according to the license terms of each resource.
